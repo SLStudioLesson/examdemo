@@ -12,7 +12,6 @@ public class App {
             String userInput = reader.readLine();
             System.out.println("あなたが入力した内容: " + userInput);
         } catch (Exception e) {
-
         }		
 	}
 }
