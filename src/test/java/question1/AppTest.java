@@ -39,14 +39,14 @@ class AppTest {
 
 	@Test
 	public void testCase1() {
-		String input = "テスト入力";
+		String input = "a";
 		provideInput(input);
 
 		App.main(new String[0]);
 
 		String output = getOutput();
 
-		Assertions.assertThat(output.trim()).isEqualTo("何か入力してください: あなたが入力した内容: テスト入力");
+		Assertions.assertThat(output.trim()).isEqualTo("abc");
 	}
 
 }
