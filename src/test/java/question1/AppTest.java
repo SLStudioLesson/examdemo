@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.Base64;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
@@ -39,14 +40,26 @@ class AppTest {
 
 	@Test
 	public void testCase1() {
-		String input = "a";
+		String input = "ああああ";
 		provideInput(input);
 
 		App.main(new String[0]);
 
 		String output = getOutput();
 
-		Assertions.assertThat(output.trim()).isEqualTo("abc");
+		
+	    // デコードしたいBase64エンコードされた文字列（コンソールから取ってきた文字）
+	    String encodedString = output.trim();
+
+	    // Base64デコーダーを取得し、デコード
+	    byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
+
+	    // バイト配列を文字列に変換
+	    String decodedString = new String(decodedBytes);
+
+	    // 結果を比較
+	    Assertions.assertThat(decodedString).isEqualTo(input);
+		
 	}
 
 }
